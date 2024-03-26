@@ -14,16 +14,14 @@ class CreditCard(object):
         self.expiration = str(expiration).strip()
         self.cvv = str(cvv).strip()
         self.zip = str(zip).strip()
-        if not self.validate():
-            raise Exception("Invalid Card.")
 
     def __repr__(self):
         return "Credit Card with last four #{}".format(self.number[-4:])
 
     def validate(self):
-        is_valid = self.number.isdigit() and len(self.number) == 16 and self.card_type != "" and len(self.expiration) == 4 and self.expiration.isdigit()
-        is_valid &= len(self.cvv) == 3 and self.cvv.isdigit()
-        is_valid &= 5 <= len(self.zip) >= 6
+        is_valid = self.number and self.card_type and self.expiration
+        is_valid &= re.match(r'^[0-9]{3,4}$', self.cvv)
+        is_valid &= re.match(r'^[0-9]{5}(?:-[0-9]{4})?$', self.zip)
         return is_valid
 
     def find_type(self):

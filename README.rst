@@ -1,8 +1,6 @@
 pizzapy
 =======
 
-*This has been forked from @Magicjarvis the readme below is the same as his repository..* 
-
 Disclaimer
 -----------
 This is my fork of https://github.com/gamagori/pizzapi
